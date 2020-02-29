@@ -4,10 +4,14 @@ class ForecastFacade
   end
   
   def forecast
-    ForecastService.new(format_location).forecast
+    Forecast.new(format_data)
   end
 
   private
+
+  def format_data
+    ForecastService.new(format_location).forecast
+  end
 
   def format_location
     GeolocationService.new(@location).format
