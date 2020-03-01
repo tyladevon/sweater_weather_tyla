@@ -8,12 +8,12 @@ class ForecastFacade
   end
 
   private
-
+  attr_reader :location
   def format_data
     ForecastService.new(format_location).forecast
   end
 
   def format_location
-    GeolocationService.new(@location).format
+    GeolocationService.new(location).format
   end
-end 
+end
