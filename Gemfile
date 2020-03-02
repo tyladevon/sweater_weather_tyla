@@ -36,10 +36,12 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'shoulda-matchers'
   gem 'launchy'
   gem 'pry'
   gem 'simplecov'
+  gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
 
 end
 
