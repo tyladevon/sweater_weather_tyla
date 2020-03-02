@@ -4,7 +4,7 @@ class ForecastFacade
   end
   
   def forecast
-    Forecast.new(format_data)
+    Forecast.new(format_data, @location)
   end
 
   private
