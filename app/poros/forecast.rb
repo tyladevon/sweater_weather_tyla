@@ -31,22 +31,22 @@ class Forecast
   end 
 
   def forecast
-    binding.pry
-    forecast_info = { hourly: 
-      [
-        { hour_1: data[:hourly][:data][:time],
-        temperature: data[:hourly][:data][:temperature]},
-        # {
-        #   # hour_2: data[:],
-        # },
-        # {hour_3: ,},
-        # {hour_4: ,},
-        # {hour_5: ,},
-        # {hour_6: ,}, 
-        # {hour_7: ,}, 
-        # {hour_8: }
+    [data[:hourly][:data].map do |info|
+      { time: info[:time],
+        temperature: info[:temperature]
+      }
+    end[1..8],
+    data[:daily][:data].map do |info|
+      { day: info[:time],
+        forecast_icon: info[:icon],
+        forecast: info[:summary],
+        precip: info[:precipProbability],
+        precip_icon: (info[:precipType]),
+        high: info[:temperatureHigh],
+        low: info[:temperatureLow]
+      }
+    end[1..5]
     ]
-    }
   end 
 
   private 
