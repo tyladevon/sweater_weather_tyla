@@ -31,26 +31,22 @@ class Forecast
   end 
 
   def forecast
-    forecast_info = {}
-    data[:hourly][:data][1..8].map do |info|
-      forecast_info[:hourly] =
+    [data[:hourly][:data].map do |info|
       { time: info[:time],
         temperature: info[:temperature]
       }
-    end[0..7]
-
+    end[1..8],
     data[:daily][:data].map do |info|
-      forecast_info[:weekly] =
-      { day: info[:daily][:data][:time],
-        forecast_icon: info[:daily][:data][:icon],
-        forecast: info[:daily][:data][:summary],
-        precip: number_to_percentage(info[:daily][:data][:precipProbability]),
-        precip_icon: (info[:daily][:data][:precipType]),
-        high: info[:daily][:data][:temparatureHigh],
-        low: info[:daily][:data][:temparatureLow]
+      { day: info[:time],
+        forecast_icon: info[:icon],
+        forecast: info[:summary],
+        precip: info[:precipProbability],
+        precip_icon: (info[:precipType]),
+        high: info[:temperatureHigh],
+        low: info[:temperatureLow]
       }
     end[1..5]
-    forecast_info
+    ]
   end 
 
   private 
