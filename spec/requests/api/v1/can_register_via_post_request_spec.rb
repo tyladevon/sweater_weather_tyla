@@ -15,7 +15,7 @@ describe "users endpoint" do
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  it "cannot register if email or password are missing", :vcr do
+  it "cannot register if passwords are mismatched", :vcr do
      params = {
       "email": "whatever@example.com",
       "password": "password",
@@ -25,6 +25,19 @@ describe "users endpoint" do
     post '/api/v1/users', params: params
 
     expect(response.status).to eq(400)
-    expect(flash[:error]).to eq("")
+    expect(response.body).to_not be_empty
+  end
+
+  it "cannot register if email is missing" do
+     params = {
+      "email": "",
+      "password": "password",
+      "password_confirmation": "password"
+      }
+
+    post '/api/v1/users', params: params
+
+    expect(response.status).to eq(400)
+    expect(response.body).to_not be_empty
   end
 end
