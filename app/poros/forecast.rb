@@ -1,8 +1,9 @@
 class Forecast
   attr_reader :id, :current, :details, :forecast
   def initialize(data, location)
+    @location = location
     @data = data
-    @id = id
+    @id = nil
   end
   
   def current
