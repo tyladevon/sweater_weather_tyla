@@ -10,7 +10,8 @@ class ForecastFacade
   private
   attr_reader :location
   def format_data
-    ForecastService.new(format_location).forecast
+    time = Time.now
+    ForecastService.new(format_location, time).forecast
   end
 
   def format_location
