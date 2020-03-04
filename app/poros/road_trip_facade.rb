@@ -16,9 +16,16 @@ class RoadTripFacade
   end
 
   def format_arrival_forecast
+    forecast_lookup = lookup_forecast
+    summary = forecast_lookup[:currently][:summary]
+    temp = forecast_lookup[:currently][:temperature]
+    ForecastArrival.new(summary, temp)
+  end
+  
+  def lookup_forecast
     location = format_location
     time = formatted_time
-    ForecastService.new(location, time).roadtrip[:currently][:summary]
+    ForecastService.new(location, time).roadtrip
   end
 
   def format_location
