@@ -17,9 +17,12 @@ describe "registered client can post to roadtrip endpoint" do
 
       post '/api/v1/road_trip', params: params
 
-      # expect(response).to be_successful
-      # result = JSON.parse(response.body, symbolize_names: true)
-      # expect(result[:data][:attributes][:api_key]).to_not be_empty
+      expect(response).to be_successful
+      result = JSON.parse(response.body, symbolize_names: true)
+      expect(result[:data][:attributes][:origin]).to_not be_empty
+      expect(result[:data][:attributes][:destination]).to_not be_empty
+      expect(result[:data][:attributes][:travel_time]).to_not be_empty
+      expect(result[:data][:attributes][:arrival_forecast]).to_not be_empty
     end 
   end 
 end 
