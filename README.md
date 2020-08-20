@@ -31,7 +31,6 @@ The [project requirements](https://backend.turing.io/module3/projects/sweater_we
 4. run 'bundle install'
 5. run 'rails db:setup'
 6. run 'rails db:migrate'
-7. run 'rails s' in terminal
 
 ### Endpoints
 
@@ -42,11 +41,11 @@ https://sweater-weather-tyla.herokuapp.com/api/v1
 
 Note the appropriate HTTP verb for each endpoint:
 
-GET '/forecast'
-GET '/backgrounds'
-POST '/sessions'
-POST '/users'
-POST '/road_trip'
+- GET '/forecast'
+- GET '/backgrounds'
+- POST '/sessions'
+- POST '/users'
+- POST '/road_trip'
 
 #### You will need Query Parameters for each endpoint.
 
